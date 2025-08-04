@@ -164,18 +164,18 @@ local function specifyHealerAndDamagerInParty(macroName)
     -- loop to look at all 3 party members
     local condition = GetNumGroupMembers()
     for i = GetNumGroupMembers()-1,0,-1 do
-        --look for healer or prot pala tank who will be categorized as healers
-        if (UnitGroupRolesAssigned("party"..i) == "HEALER" or ((UnitGroupRolesAssigned("party"..i) == "TANK" and UnitClass("party"..i) == "Paladin"))) then
+        --look for healer who will be categorized as healer
+        if (UnitGroupRolesAssigned("party"..i) == "HEALER") then
             --assign categorized healer into variable
             H=UnitNameUnmodified("party"..i)    
             --print('Healer: ' .. H)               
         end
-        --look for healer or NON prot pala tanks who will be categorized as damagers
-        if (UnitGroupRolesAssigned("party"..i) == "DAMAGER" or ((UnitGroupRolesAssigned("party"..i) == "TANK" and UnitClass("party"..i) == "Warrior")) or ((UnitGroupRolesAssigned("party"..i) == "TANK" and UnitClass("party"..i) == "DeathKnight")) or ((UnitGroupRolesAssigned("party"..i) == "TANK" and UnitClass("party"..i) == "Druid")) or ((UnitGroupRolesAssigned("party"..i) == "TANK" and UnitClass("party"..i) == "Demon Hunter")) or ((UnitGroupRolesAssigned("party"..i) == "TANK" and UnitClass("party"..i) == "Monk")) or ((UnitGroupRolesAssigned("party"..i) == "TANK" and UnitClass("party"..i) == "Warrior"))) then
+        --look for damager or tank who will be categorized as damager
+        if (UnitGroupRolesAssigned("party"..i) == "DAMAGER" or ((UnitGroupRolesAssigned("party"..i) == "TANK" and UnitClass("party"..i) == "Warrior")) or ((UnitGroupRolesAssigned("party"..i) == "TANK" and UnitClass("party"..i) == "DeathKnight")) or ((UnitGroupRolesAssigned("party"..i) == "TANK" and UnitClass("party"..i) == "Druid")) or ((UnitGroupRolesAssigned("party"..i) == "TANK" and UnitClass("party"..i) == "Demon Hunter")) or ((UnitGroupRolesAssigned("party"..i) == "TANK" and UnitClass("party"..i) == "Monk")) or ((UnitGroupRolesAssigned("party"..i) == "TANK" and UnitClass("party"..i) == "Paladin"))) then
             --assign categorized damager into variable
             D=UnitNameUnmodified("party"..i) 
             --print('Damager: ' .. D)                 
-        end 
+        end
     end  
     -- in case nothing has been found
     if (H == nil and D == nil) then
@@ -282,3 +282,4 @@ dynamicMacros:SetScript("OnEvent", function(self, event, ...)
         updatePlayerNamesInMacros(self, event, ...)
     end
 end)
+
