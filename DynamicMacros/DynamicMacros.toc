@@ -1,9 +1,10 @@
-## Interface: 110100
+## Interface: 110200
 ## Title: DynamicMacros
 ## Author: Krionel
-## Version: 2.3.6
+## Version: 2.3.7
 
 ## SavedVariablesPerCharacter: DynamicMacros_macroNameArray
 
 GUI.lua
 main.lua
+
